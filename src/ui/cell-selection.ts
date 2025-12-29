@@ -389,7 +389,7 @@ class CellSelection {
     document.addEventListener('copy', (e: ClipboardEvent) => this.onCaptureCopy(e, false));
     document.addEventListener('cut', (e: ClipboardEvent) => this.onCaptureCopy(e, true));
     document.addEventListener('keyup', this.handleDeleteKeyup.bind(this));
-    // document.addEventListener('paste', this.onCapturePaste.bind(this));
+    document.addEventListener('paste', this.onCapturePaste.bind(this));
   }
 
   initWhiteList() {
@@ -535,7 +535,7 @@ class CellSelection {
   }
 
   onCapturePaste(e: ClipboardEvent) {
-    if (!this.selectedTds?.length) return;
+    if (!this.quill.hasFocus() || !this.selectedTds?.length) return;
     e.preventDefault();
     const html = e.clipboardData?.getData('text/html');
     const text = e.clipboardData?.getData('text/plain');
