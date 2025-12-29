@@ -389,7 +389,7 @@ class CellSelection {
     document.addEventListener('copy', (e: ClipboardEvent) => this.onCaptureCopy(e, false));
     document.addEventListener('cut', (e: ClipboardEvent) => this.onCaptureCopy(e, true));
     document.addEventListener('keyup', this.handleDeleteKeyup.bind(this));
-    // document.addEventListener('paste', this.onCapturePaste.bind(this));
+    document.addEventListener('paste', this.onCapturePaste.bind(this));
   }
 
   initWhiteList() {
